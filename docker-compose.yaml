@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  bot:
+    container_name: bot_fauna_app
+    build:
+      context: .
+
+    image: goodwin954/bot_fauna
+    depends_on:
+      pg:
+        condition: service_healthy
+  pg:
+    container_name: bot_fauna_pg
+    image: postgres:latest
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: bot_fauna
+      POSTGRES_PASSWORD: bot_fauna
+      POSTGRES_DB: bot_fauna
+    volumes:
+      - ./pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U bot_fauna" ]
+      interval: 5s
+      timeout: 5s
+      retries: 5

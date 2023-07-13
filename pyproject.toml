@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "bot-fauna2"
+version = "0.1.0"
+description = ""
+authors = ["ModuleB <125956341+ModuleB@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+aiogram = "^2.25.1"
+sqlalchemy = "^2.0.16"
+environs = "^9.5.0"
+colorlog = "^6.7.0"
+psycopg2-binary = "^2.9.6"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
